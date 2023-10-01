@@ -140,7 +140,7 @@ def predict_with_model(model: "Regressor", data: pd.DataFrame) -> np.ndarray:
     Predict labels for the given data.
 
     Args:
-        model (keras.Models): The regressor model.
+        model (Regressor): The regressor model.
         data (pd.DataFrame): The input data.
 
     Returns:
