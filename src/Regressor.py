@@ -1,9 +1,12 @@
 import os
 import re
 import warnings
-from typing import List
 import numpy as np
 import pandas as pd
+
+os.environ["MPLCONFIGDIR"] = os.getcwd() + "/configs/"
+
+from typing import List
 from supervised.automl import AutoML
 from joblib import dump, load
 from sklearn.exceptions import NotFittedError

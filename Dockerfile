@@ -5,7 +5,7 @@ RUN apt-get -y update && apt-get install -y --no-install-recommends \
          dos2unix \
          gcc \
          g++ \
-    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY ./requirements/requirements.txt /opt/
 RUN pip install --upgrade pip
@@ -25,4 +25,3 @@ ENV PATH="/opt/src:${PATH}"
 USER 1000
 
 ENTRYPOINT ["/opt/entry_point.sh"]
-#ENTRYPOINT ["/bin/bash"]
