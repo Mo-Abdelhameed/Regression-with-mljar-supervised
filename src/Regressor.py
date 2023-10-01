@@ -81,8 +81,8 @@ class Regressor:
             random_state=self.model_config["seed_value"],
             train_ensemble=self.model_config["train_ensemble"],
             stack_models=self.model_config["stack_models"],
-            eval_metric=self.model_config["eval_metric"]
-
+            eval_metric=self.model_config["eval_metric"],
+            results_path=f"{paths.MODEL_ARTIFACTS_PATH}/mljar_artifacts"
         )
 
     def __str__(self):
