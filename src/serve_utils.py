@@ -10,7 +10,6 @@ from config import paths
 from data_models.data_validator import validate_data
 from logger import get_logger, log_error
 from Regressor import load_predictor_model, predict_with_model
-from preprocessing.pipeline import run_pipeline
 from schema.data_schema import load_saved_schema
 from utils import read_json_as_dict
 

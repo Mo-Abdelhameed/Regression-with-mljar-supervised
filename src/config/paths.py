@@ -29,7 +29,8 @@ MODEL_ARTIFACTS_PATH = os.path.join(MODEL_PATH, "artifacts")
 SCALER_FILE = os.path.join(MODEL_ARTIFACTS_PATH, "scaler.joblib")
 # Path to the encoder object used during training
 ENCODER_FILE = os.path.join(MODEL_ARTIFACTS_PATH, "encoder.joblib")
-
+# Path to results stored by mljar-supervised
+RESULT_PATH = os.path.join(MODEL_ARTIFACTS_PATH, "mljar_artifacts")
 # Path to saved schema in artifacts directory
 SAVED_SCHEMA_DIR_PATH = os.path.join(MODEL_ARTIFACTS_PATH, "schema")
 # Name of the preprocessing pipeline file

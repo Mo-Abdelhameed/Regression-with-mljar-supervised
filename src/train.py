@@ -14,6 +14,7 @@ def run_training(
     saved_schema_dir_path: str = paths.SAVED_SCHEMA_DIR_PATH,
     train_dir: str = paths.TRAIN_DIR,
     predictor_dir_path: str = paths.PREDICTOR_DIR_PATH,
+    result_path: str = paths.RESULT_PATH
 ) -> None:
     """
     Run the training process and saves model artifacts
@@ -22,7 +23,8 @@ def run_training(
         input_schema_dir (str, optional): The directory path of the input schema.
         saved_schema_dir_path (str, optional): The path where to save the schema.
         train_dir (str, optional): The directory path of the train data.
-        predictor_dir_path (str, optional): Dir path where to save the predictor model.
+        predictor_dir_path (str, optional): Dir path to save the predictor model.
+        result_path (str, optional): Dir path to the save models (required by mljar).
     Returns:
         None
     """

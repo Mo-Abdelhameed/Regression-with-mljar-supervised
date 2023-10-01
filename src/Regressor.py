@@ -12,7 +12,7 @@ from joblib import dump, load
 from sklearn.exceptions import NotFittedError
 from config import paths
 from schema.data_schema import RegressionSchema
-from utils import read_json_as_dict
+from utils import read_json_as_dict, clear_dir
 
 warnings.filterwarnings("ignore")
 PREDICTOR_FILE_NAME = "predictor.joblib"
@@ -65,6 +65,7 @@ class Regressor:
     def __init__(self,
                  train_input: pd.DataFrame,
                  schema: RegressionSchema,
+                 result_path: str = paths.RESULT_PATH
                  ):
         """Construct a New Regressor."""
         self._is_trained: bool = False
@@ -73,6 +74,10 @@ class Regressor:
         self.schema = schema
         self.model_name = "mljar-supervised-regressor"
         self.model_config = read_json_as_dict(paths.MODEL_CONFIG_FILE_PATH)
+
+        if os.path.exists(result_path):
+            clear_dir(result_path)
+
         self.predictor = AutoML(
             mode="Compete",
             ml_task="regression",
@@ -82,7 +87,7 @@ class Regressor:
             train_ensemble=self.model_config["train_ensemble"],
             stack_models=self.model_config["stack_models"],
             eval_metric=self.model_config["eval_metric"],
-            results_path=f"{paths.MODEL_ARTIFACTS_PATH}/mljar_artifacts"
+            results_path=result_path
         )
 
     def __str__(self):
@@ -116,7 +121,7 @@ class Regressor:
 
         if not self._is_trained:
             raise NotFittedError("Model is not fitted yet.")
-        dump(self.predictor, os.path.join(model_dir_path, PREDICTOR_FILE_NAME))
+        dump(self, os.path.join(model_dir_path, PREDICTOR_FILE_NAME))
 
     @classmethod
     def load(cls, model_dir_path: str) -> "Regressor":
@@ -157,7 +162,7 @@ def save_predictor_model(model: "Regressor", predictor_dir_path: str) -> None:
     model.save(predictor_dir_path)
 
 
-def load_predictor_model(predictor_dir_path: str) -> "Regressor":
+def load_predictor_model(predictor_dir_path: str) -> Regressor:
     """
     Load the regressor model from disk.
 

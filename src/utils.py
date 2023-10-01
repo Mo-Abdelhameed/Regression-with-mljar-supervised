@@ -1,6 +1,7 @@
 import json
 import os
 import random
+import shutil
 from typing import Any, Dict, List, Tuple, Union
 
 import numpy as np
@@ -194,3 +195,19 @@ def make_serializable(obj: Any) -> Union[int, float, List[Union[int, float]], An
         return obj.tolist()
     else:
         return json.JSONEncoder.default(None, obj)
+
+
+def clear_dir(dir_path: str) -> None:
+    """
+    Deletes content of a certain directory
+
+    Args:
+          dir_path (str): Path of the directory.
+
+    returns: None
+    """
+    if os.path.isdir(dir_path):
+        shutil.rmtree(dir_path)
+        os.mkdir(dir_path)
+    else:
+        raise NotADirectoryError(f"{dir_path} is not a directory.")
