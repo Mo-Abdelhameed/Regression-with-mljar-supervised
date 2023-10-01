@@ -1,7 +1,7 @@
 {
   "seed_value": 123,
   "prediction_field_name": "prediction",
-  "total_time_limit": 10,
+  "total_time_limit": 180,
   "train_ensemble": false,
   "stack_models": false,
   "eval_metric": "rmse",
