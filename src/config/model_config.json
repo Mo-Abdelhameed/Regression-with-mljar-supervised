@@ -2,7 +2,7 @@
   "seed_value": 123,
   "prediction_field_name": "prediction",
   "total_time_limit": 180,
-  "train_ensemble": false,
+  "train_ensemble": true,
   "stack_models": false,
   "eval_metric": "rmse",
   "algorithms": [
