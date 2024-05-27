@@ -14,3 +14,12 @@ coverage.xml
 *.cover
 .coverage*
 AutoMl*/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
